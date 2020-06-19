@@ -1,15 +1,23 @@
 {
-  "name": "",
-  "version": "",
+  "name": "product-display-alo",
+  "version": "1.0.0",
+  "main": "index.js",
   "description": "",
-  "author": "",
+  "author": "Kimberly Eddinger <kimberly.c.eddinger@gmail.com>",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
