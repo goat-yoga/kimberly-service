@@ -9,6 +9,9 @@ const controller = {
         res.status(200).json(results);
       }
     })
+  },
+  get: (req, res) => {
+    
   }
 }
 
