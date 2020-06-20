@@ -1,4 +1,4 @@
-const helpers = require('./db/model.js');
+const helpers = require('../db/model.js');
 
 const controller = {
   getSpecific: (req, res) => {
@@ -11,7 +11,7 @@ const controller = {
     })
   },
   get: (req, res) => {
-    
+
   }
 }
 

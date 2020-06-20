@@ -71,3 +71,6 @@ const seed = function(){
 }
 
 seed();
+// adding a comment so I can create a new pull request
+
+module.exports = Display;
