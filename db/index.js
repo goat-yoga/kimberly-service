@@ -8,12 +8,17 @@ db.once('open', function() {
   console.log('connection open')
 });
 
-const productDisplay = new mongoose.Schema({
+
+var displaySchema =  new mongoose.Schema({
   id: {type: Number, unique: true},
   name: String,
   department: String,
-  colors: [{colorId: Number, colorName: String}],
-  sizes: [{sizeId: Number, sizeName: String}],
-  images: [{imageURL: String}]
+  colors: [{colorName: String, images: Array, sizes: Array}],
+  price: String
 })
 
+
+module.exports = {
+  db: db,
+  displaySchema: displaySchema
+}
