@@ -1,0 +1,64 @@
+{
+    "_id": "5eed7281ede7ebf31e3c956f",
+    "name": "Rustic Soft Shirt",
+    "department": "Women",
+    "colors": [
+        {
+            "images": [
+                "http://lorempixel.com/640/480/fashion",
+                "http://lorempixel.com/640/480/fashion"
+            ],
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "colorName": "orange"
+        },
+        {
+            "images": [
+                "http://lorempixel.com/640/480/fashion",
+                "http://lorempixel.com/640/480/fashion"
+            ],
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "colorName": "ivory"
+        },
+        {
+            "images": [
+                "http://lorempixel.com/640/480/fashion",
+                "http://lorempixel.com/640/480/fashion"
+            ],
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "colorName": "pink"
+        },
+        {
+            "images": [
+                "http://lorempixel.com/640/480/fashion",
+                "http://lorempixel.com/640/480/fashion"
+            ],
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "colorName": "magenta"
+        }
+    ],
+    "price": "$43.99"
+}
