@@ -5,5 +5,3 @@ router
 .get(controller.getSpecific)
 
 module.exports = router;
-
-// a comment to see if my eslint is checking new changes
