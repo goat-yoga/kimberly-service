@@ -13,10 +13,10 @@ var displaySchema =  new mongoose.Schema({
   id: {type: Number, unique: true},
   name: String,
   department: String,
+  description: [{description: Array, fit: Array, fabrication: String}],
   colors: [{colorName: String, images: Array, sizes: Array}],
   price: String
 })
-
 
 module.exports = {
   db: db,

@@ -27,6 +27,11 @@ var makeProduct = function() {
    let randomImages = randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), faker.image.fashion);
    let randomPrice = Math.ceil(Math.random() * Math.ceil(60 - 20) + 20);
    let randomName = faker.commerce.productName();
+   let randomListWords = randomFakeArray(Math.ceil(Math.random() * Math.ceil(4)), faker.lorem.words);
+   let randomDesc = [faker.lorem.paragraph(), randomListWords]
+  let randomFit = randomListWords;
+  let randomMaterial = faker.commerce.productMaterial();
+   let randomDesciptionArr = [randomDesc, randomFit, randomMaterial]
 
    let allColors = randomColors.map((color) => {
       return {
@@ -39,6 +44,7 @@ var makeProduct = function() {
    var newObj = {
      name: randomName,
      department: dept,
+     description: randomDesciptionArr,
      colors: allColors,
      price: `$${randomPrice}.99`
    }
@@ -54,7 +60,6 @@ var makeOneHundred = function(){
   }
   return newArr
 }
-
 
 let Display = mongoose.model('Display', displaySchema);
 
