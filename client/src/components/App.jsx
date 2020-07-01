@@ -27,12 +27,11 @@ class App extends React.Component {
       fit: [],
       fabrication: []
     }
-    this.handleChangePhotos = this.handleChangePhotos.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleSelectSize = this.handleSelectSize.bind(this);
   }
 
   componentDidMount() {
-
     axios
     .get('/products/5efcb884a2775f013b4858e9')
     .then(({data})=> {
@@ -59,7 +58,7 @@ class App extends React.Component {
   }
 
 
-  handleChangePhotos(e, x, colorName) {
+  handleChangeColor(e, x, colorName) {
     this.setState({
       currentColor: this.state.colors[x],
       currentPhotos: this.state.colors[x].images,
@@ -84,21 +83,21 @@ class App extends React.Component {
           </div>
           <div className="product-data sticky">
             <Panel
-            name={this.state.name}
-            price={this.state.price}
-            colors={this.state.colors}
-            currentColor={this.state.currentColor}
-            currentSizes={this.state.currentSizes}
-            handleChangePhotos={this.handleChangePhotos}
-            colorNameCurrent={this.state.colorNameCurrent}
-            handleSelectSize={this.handleSelectSize}
-            sizeSelected={this.state.sizeSelected}/>
+              name={this.state.name}
+              price={this.state.price}
+              colors={this.state.colors}
+              currentColor={this.state.currentColor}
+              currentSizes={this.state.currentSizes}
+              handleChangeColor={this.handleChangeColor}
+              colorNameCurrent={this.state.colorNameCurrent}
+              handleSelectSize={this.handleSelectSize}
+              sizeSelected={this.state.sizeSelected}/>
           </div>
         </div>
-           <DescriptionContainer
-           desc={this.state.description}
-           fit={this.state.fit}
-           fabrication={this.state.fabrication}/>
+        <DescriptionContainer
+          desc={this.state.description}
+          fit={this.state.fit}
+          fabrication={this.state.fabrication}/>
       </div>
     )
   }

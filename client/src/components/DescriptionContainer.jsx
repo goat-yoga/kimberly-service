@@ -4,12 +4,12 @@ import Attributes from './Attributes.jsx';
 
 const DescriptionContainer = (props) => {
   return (
-   <div className="description row description-row">
-    <div className="description-line"></div>
-    <Description desc={props.desc}/>
-    <Attributes fit={props.fit} fabrication={props.fabrication}/>
-    <div className="description-line"></div>
-   </div>
+    <div className="description row description-row">
+      <div className="description-line"></div>
+      <Description desc={props.desc}/>
+      <Attributes fit={props.fit} fabrication={props.fabrication}/>
+      <div className="description-line"></div>
+    </div>
   )
 }
 
