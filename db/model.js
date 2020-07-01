@@ -1,6 +1,6 @@
-const Display = require('./seed.js')
+const {displaySchema} = require('./index.js')
 
 module.exports = {
-  getOneProduct: (id) => Display.findById({ _id: id})
+  getSpecific: (id) => displaySchema.find({ _id: id})
 }
 
