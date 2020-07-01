@@ -25,7 +25,7 @@ class App extends React.Component {
       sizeSelected: false,
       colorSelected: false,
       fit: [],
-      fabriaction: []
+      fabrication: []
     }
     this.handleChangePhotos = this.handleChangePhotos.bind(this);
     this.handleSelectSize = this.handleSelectSize.bind(this);
@@ -37,7 +37,7 @@ class App extends React.Component {
     .get('/products/5efcb884a2775f013b4858e9')
     .then(({data})=> {
 
-      let {_id, name, department, description, colors, price} = data;
+      let {_id, name, department, description, fit, fabrication, colors, price} = data;
 
       this.setState({
         description: description,
@@ -48,7 +48,9 @@ class App extends React.Component {
         currentPhotos: colors[0].images,
         currentColor: colors[0],
         currentSizes: colors[0].sizes,
-        colorNameCurrent: colors[0].colorName
+        colorNameCurrent: colors[0].colorName,
+        fit: fit,
+        fabrication: fabrication
       })
     })
     .catch((err)=> {
@@ -62,7 +64,7 @@ class App extends React.Component {
       currentPhotos: this.state.colors[x].images,
       currentSizes: this.state.colors[x].sizes,
       colorNameCurrent: colorName,
-      colorSelected: true
+      colorSelected: true,
     })
   }
 
@@ -92,7 +94,10 @@ class App extends React.Component {
             sizeSelected={this.state.sizeSelected}/>
           </div>
         </div>
-           <DescriptionContainer desc={this.state.description}/>
+           <DescriptionContainer
+           desc={this.state.description}
+           fit={this.state.fit}
+           fabrication={this.state.fabrication}/>
       </div>
     )
   }
