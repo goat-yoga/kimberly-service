@@ -14,8 +14,8 @@ service.use(bodyparser.urlencoded({extended:true}));
 service.use(morgan('dev'));
 service.use(cors());
 
-app.use('/product', router);
+service.use('/products', router);
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+service.use('/', express.static(path.join(__dirname, '../public')))
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+service.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
