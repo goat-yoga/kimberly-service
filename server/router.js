@@ -1,11 +1,7 @@
 const router = require('express').Router();
-const controller = require('./controller.js');
 
 router
 .route('/:id')
-.get(controller.getOneProduct)
-
+.get(controller.getSpecific)
 
 module.exports = router;
-
-
