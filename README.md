@@ -1,13 +1,12 @@
 # Project Name
 
-> Project description
+> We build a product page clone of aloyoga.com as a student project!
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/goat-yoga/wilson_proxy
+  - https://github.com/goat-yoga/rizwan-service-actual
+  - https://github.com/goat-yoga/russell-service
 
 ## Table of Contents
 
