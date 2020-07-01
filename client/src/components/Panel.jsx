@@ -47,7 +47,7 @@ const Panel = (props) => {
       </div>
       <div>
         {props.sizeSelected ?
-        <button className="product-buy-button" type="button">Add to Bag</button>
+        <button className="product-buy-button" type="button" style={{backgroundColor: "#000"}}>Add to Bag</button>
         : <button className="product-buy-button" type="button">Select Size</button>}
       </div>
       <Shipping/>

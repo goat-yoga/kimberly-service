@@ -58,13 +58,14 @@ class App extends React.Component {
     })
   }
 
+
   handleChangePhotos(e, x, colorName) {
     this.setState({
       currentColor: this.state.colors[x],
       currentPhotos: this.state.colors[x].images,
       currentSizes: this.state.colors[x].sizes,
       colorNameCurrent: colorName,
-      colorSelected: true,
+      colorSelected: true
     })
   }
 

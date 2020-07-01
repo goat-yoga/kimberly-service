@@ -19,11 +19,21 @@ class Selections extends React.Component {
       </p>
       <div className="options-wrapper options-wrapper-color">
         {this.props.colors.map((color, index)=> {
-          return <ColorButton
-          color={color}
-          key={index}
-          i={index}
-          handleChangePhotos={this.props.handleChangePhotos} />
+          return (
+            color.colorName === this.props.colorNameCurrent ?
+            <ColorButton
+              color={color}
+              key={index}
+              i={index}
+              handleChangePhotos={this.props.handleChangePhotos}
+              style={"1px solid #979797"}/>
+            : <ColorButton
+                color={color}
+                key={index}
+                i={index}
+                handleChangePhotos={this.props.handleChangePhotos}
+                style={"0px solid #979797"} />
+          )
         })}
       </div>
       </div>
