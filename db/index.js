@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
 mongoose.connect('mongodb://localhost/servicesdb', {useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -11,10 +13,13 @@ db.once('open', function() {
 
 var displaySchema =  new mongoose.Schema({
   id: {type: Number, unique: true},
+  productNumber: Number,
   name: String,
   department: String,
-  description: [{description: Array, fit: Array, fabrication: String}],
-  colors: [{colorName: String, images: Array, sizes: Array}],
+  description: [{ paragraph: Array, bullets: Array}],
+  fit: Array,
+  fabrication: Array,
+  colors: [{colorName: String, swatch: String, images: Array, sizes: Array}],
   price: String
 })
 

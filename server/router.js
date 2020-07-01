@@ -2,7 +2,7 @@ const router = require('express').Router();
 const controller = require('./controller.js');
 
 router
-.route('/:id/:color')
+.route('/:id')
 .get(controller.getOneProduct)
 
 

@@ -2,16 +2,13 @@ const helpers = require('../db/model.js');
 
 const controller = {
   getOneProduct: (req, res) => {
-    helpers.getSpecific(req.params.id, (err, results) => {
-      if (err){
-        res.status(400).send(err);
-      } else {
-        res.status(200).json(results);
-      }
+    helpers.getOneProduct(req.params.id)
+    .then((results)=> {
+      res.status(200).json(results);
     })
-  },
-  get: (req, res) => {
-
+    .catch((err)=> {
+      res.status(400).send(err);
+    })
   }
 }
 

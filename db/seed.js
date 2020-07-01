@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 const {displaySchema} = require('./index.js')
+const aws = require('aws-sdk');
+const config = require('../config/config.json');
 
 
 var makeProduct = function() {
@@ -21,34 +23,63 @@ var makeProduct = function() {
     return dept;
   }
 
-   let dept = makeRandomDept();
-   let sizes = dept === 'Women' ? ['XS', 'S', 'M', 'L', 'XL'] : ['S', 'M', 'L', 'XL', '2XL'];
-   let randomColors = randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), faker.commerce.color);
-   let randomImages = randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), faker.image.fashion);
-   let randomPrice = Math.ceil(Math.random() * Math.ceil(60 - 20) + 20);
-   let randomName = faker.commerce.productName();
-   let randomListWords = randomFakeArray(Math.ceil(Math.random() * Math.ceil(4)), faker.lorem.words);
-   let randomDesc = [faker.lorem.paragraph(), randomListWords]
-  let randomFit = randomListWords;
-  let randomMaterial = faker.commerce.productMaterial();
-   let randomDesciptionArr = [randomDesc, randomFit, randomMaterial]
+  let dept = makeRandomDept();
+  let sizes = dept === 'Women' ? ['XS', 'S', 'M', 'L', 'XL'] : ['S', 'M', 'L', 'XL', '2XL'];
+  let randomPrice = Math.ceil(Math.random() * Math.ceil(60 - 20) + 20);
+  let randomName = faker.lorem.words();
 
-   let allColors = randomColors.map((color) => {
-      return {
-         colorName: color,
-         images: randomImages,
-         sizes: sizes
-      };
-   })
+  let randomListWords = randomFakeArray(Math.ceil(Math.random() * Math.ceil(4)), faker.lorem.words);
+  let randomDesc = faker.lorem.paragraph()
+  let randomFit = randomFakeArray(Math.ceil(Math.random() * Math.ceil(3)), faker.lorem.sentence);
+  let randomMaterial = randomFakeArray(Math.ceil(Math.random() * Math.ceil(4)), faker.lorem.sentence);
+  let randomDesciptionObj = {
+    paragraph: randomDesc,
+    bullets: [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()]
+  }
 
-   var newObj = {
-     name: randomName,
-     department: dept,
-     description: randomDesciptionArr,
-     colors: allColors,
-     price: `$${randomPrice}.99`
-   }
-   return newObj;
+
+  function getRandomColorSwatch() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  let colorSwatches = randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), getRandomColorSwatch);
+
+  var grabRandomImgUrl = function() {
+    let imgNumber = Math.ceil(Math.random() * Math.ceil(100));
+    if (imgNumber < 10) {
+      imgNumber = '00' + imgNumber;
+    } else if (imgNumber < 100) {
+      imgNumber = '0' + imgNumber;
+    }
+    return `http://d1nv9rmhof7157.cloudfront.net/${imgNumber}.jpg`
+  }
+
+
+  let colorsAndPhotos = colorSwatches.map((color) => {
+    return {
+      colorName: faker.commerce.color(),
+      swatch: color,
+      images: randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), grabRandomImgUrl),
+      sizes: sizes
+    }
+  })
+
+
+  var newObj = {
+    name: randomName,
+    department: dept,
+    description: randomDesciptionObj,
+    fit: randomFit,
+    fabrication: randomMaterial,
+    colors: colorsAndPhotos,
+    price: randomPrice
+  }
+  return newObj;
 }
 
 var makeOneHundred = function(){
@@ -60,7 +91,6 @@ var makeOneHundred = function(){
   }
   return newArr
 }
-
 let Display = mongoose.model('Display', displaySchema);
 
 const seed = function(){
@@ -78,3 +108,7 @@ const seed = function(){
 seed();
 
 module.exports = Display;
+
+// unit test ideas for seed
+// expect there to be 100 test results
+// expect all properties to exist
