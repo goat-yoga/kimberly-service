@@ -78,29 +78,31 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="main-container">
-        <div className="product-wrapper">
-          <div className="product-images">
-            <Photos photos={this.state.currentPhotos}/>
+      <main className="main" id="MainContent" role="main">
+        <div className="main-container">
+          <div className="product-wrapper">
+            <div className="product-images">
+              <Photos photos={this.state.currentPhotos}/>
+            </div>
+            <div className="product-data sticky">
+              <Panel
+                name={this.state.name}
+                price={this.state.price}
+                colors={this.state.colors}
+                currentColor={this.state.currentColor}
+                currentSizes={this.state.currentSizes}
+                handleChangeColor={this.handleChangeColor}
+                colorNameCurrent={this.state.colorNameCurrent}
+                handleSelectSize={this.handleSelectSize}
+                sizeSelected={this.state.sizeSelected}/>
+            </div>
           </div>
-          <div className="product-data sticky">
-            <Panel
-              name={this.state.name}
-              price={this.state.price}
-              colors={this.state.colors}
-              currentColor={this.state.currentColor}
-              currentSizes={this.state.currentSizes}
-              handleChangeColor={this.handleChangeColor}
-              colorNameCurrent={this.state.colorNameCurrent}
-              handleSelectSize={this.handleSelectSize}
-              sizeSelected={this.state.sizeSelected}/>
-          </div>
+          <DescriptionContainer
+            desc={this.state.description}
+            fit={this.state.fit}
+            fabrication={this.state.fabrication}/>
         </div>
-        <DescriptionContainer
-          desc={this.state.description}
-          fit={this.state.fit}
-          fabrication={this.state.fabrication}/>
-      </div>
+      </main>
     )
   }
 }
