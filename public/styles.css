@@ -40,7 +40,7 @@ body {
   margin-bottom: 6.2rem;
 }
 
-#app {
+#product-display {
   position: relative;
   min-height: 100vh;
   max-width: 1680px;
@@ -53,7 +53,7 @@ body {
 }
 
 @media (max-width: 767.98px) {
-  #app {
+  #product-display {
       margin-top: 0;
   }
 }
@@ -252,7 +252,7 @@ img {
   justify-content: space-between;
 }
 
-#app .title-wrapper {
+#product-display .title-wrapper {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -263,7 +263,7 @@ img {
 }
 
 @media (max-width: 767.98px) {
-  #app .title-wrapper {
+  #product-display .title-wrapper {
       margin-top: 15px;
   }
 }
@@ -332,7 +332,7 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  #app .title-wrapper h1 {
+  #product-display .title-wrapper h1 {
       font-weight: 200;
   }
 }
