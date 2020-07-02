@@ -6,13 +6,21 @@ const Attributes = (props) => {
       <div className="fit">
         <h4 className="h4 h4-uppercase h4-black">fit</h4>
         <ul>
-          <li className="small-p">High rise &amp; hits just above ankle</li>
+          {
+            props.fit.map( (sentence, i) => {
+              return <li className="small-p" key={i}>{sentence}</li>
+            })
+          }
         </ul>
       </div>
       <div className="fabrication">
         <h4 className="h4 h4-uppercase h4-black">fabrication</h4>
         <ul>
-        <li className="small-p">Signature, micro-performance, double-knit Airlift fabric</li>
+          {
+            props.fabrication.map( (sentence, i) => {
+            return <li className="small-p" key={i}>{sentence}</li>
+            })
+          }
         </ul>
       </div>
     </div>

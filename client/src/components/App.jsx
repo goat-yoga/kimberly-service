@@ -25,19 +25,20 @@ class App extends React.Component {
       sizeSelected: false,
       colorSelected: false,
       fit: [],
-      fabriaction: []
+      fabrication: []
     }
-    this.handleChangePhotos = this.handleChangePhotos.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleSelectSize = this.handleSelectSize.bind(this);
   }
 
   componentDidMount() {
+    let newProduct = Math.floor(Math.random() * (6100 - 6000)) + 6000;
 
     axios
-    .get('/products/5efcb884a2775f013b4858e9')
+    .get(`/products/${newProduct}`)
     .then(({data})=> {
-
-      let {_id, name, department, description, colors, price} = data;
+      let allData = data[0];
+      let {_id, name, department, description, fit, fabrication, colors, price} = allData;
 
       this.setState({
         description: description,
@@ -48,7 +49,9 @@ class App extends React.Component {
         currentPhotos: colors[0].images,
         currentColor: colors[0],
         currentSizes: colors[0].sizes,
-        colorNameCurrent: colors[0].colorName
+        colorNameCurrent: colors[0].colorName,
+        fit: fit,
+        fabrication: fabrication
       })
     })
     .catch((err)=> {
@@ -56,7 +59,8 @@ class App extends React.Component {
     })
   }
 
-  handleChangePhotos(e, x, colorName) {
+
+  handleChangeColor(e, x, colorName) {
     this.setState({
       currentColor: this.state.colors[x],
       currentPhotos: this.state.colors[x].images,
@@ -81,18 +85,21 @@ class App extends React.Component {
           </div>
           <div className="product-data sticky">
             <Panel
-            name={this.state.name}
-            price={this.state.price}
-            colors={this.state.colors}
-            currentColor={this.state.currentColor}
-            currentSizes={this.state.currentSizes}
-            handleChangePhotos={this.handleChangePhotos}
-            colorNameCurrent={this.state.colorNameCurrent}
-            handleSelectSize={this.handleSelectSize}
-            sizeSelected={this.state.sizeSelected}/>
+              name={this.state.name}
+              price={this.state.price}
+              colors={this.state.colors}
+              currentColor={this.state.currentColor}
+              currentSizes={this.state.currentSizes}
+              handleChangeColor={this.handleChangeColor}
+              colorNameCurrent={this.state.colorNameCurrent}
+              handleSelectSize={this.handleSelectSize}
+              sizeSelected={this.state.sizeSelected}/>
           </div>
         </div>
-           <DescriptionContainer desc={this.state.description}/>
+        <DescriptionContainer
+          desc={this.state.description}
+          fit={this.state.fit}
+          fabrication={this.state.fabrication}/>
       </div>
     )
   }

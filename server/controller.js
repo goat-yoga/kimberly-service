@@ -2,7 +2,7 @@ const helpers = require('../db/model.js');
 
 const controller = {
   getOneProduct: (req, res) => {
-    helpers.getOneProduct(req.params.id)
+    helpers.getOneProduct(req.params.item)
     .then((results)=> {
       res.status(200).json(results);
     })
