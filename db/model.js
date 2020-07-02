@@ -1,6 +1,6 @@
-const Display = require('./seed.js')
+const {Display} = require('./index.js')
 
 module.exports = {
-  getOneProduct: (id) => Display.findById({ _id: id})
+  getOneProduct: (item) => Display.find({ itemId: item})
 }
 

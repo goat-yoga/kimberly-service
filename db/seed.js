@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
-const {displaySchema} = require('./index.js')
+const {displaySchema, Display} = require('./index.js')
 const aws = require('aws-sdk');
 const config = require('../config/config.json');
 
 
-var makeProduct = function() {
+var makeProduct = function(itemNum) {
 
   var randomFakeArray = function(number, func){
     var counter = number;
@@ -71,6 +71,7 @@ var makeProduct = function() {
 
 
   var newObj = {
+    itemId: itemNum,
     name: randomName,
     department: dept,
     description: randomDesciptionObj,
@@ -85,13 +86,15 @@ var makeProduct = function() {
 var makeOneHundred = function(){
   var newArr = [];
   counter = 100;
+  var currItemNum = 6000
   while (counter > 0){
-    newArr.push(makeProduct())
+    newArr.push(makeProduct(currItemNum))
+    currItemNum++;
     counter--;
   }
   return newArr
 }
-let Display = mongoose.model('Display', displaySchema);
+
 
 const seed = function(){
   let newData = makeOneHundred();
@@ -107,7 +110,7 @@ const seed = function(){
 
 seed();
 
-module.exports = Display;
+// module.exports = Display;
 
 // unit test ideas for seed
 // expect there to be 100 test results

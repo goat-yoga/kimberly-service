@@ -32,11 +32,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios
-    .get('/products/5efcb884a2775f013b4858e9')
-    .then(({data})=> {
+    let newProduct = Math.floor(Math.random() * (6100 - 6000)) + 6000;
 
-      let {_id, name, department, description, fit, fabrication, colors, price} = data;
+    axios
+    .get(`/products/${newProduct}`)
+    .then(({data})=> {
+      let allData = data[0];
+      let {_id, name, department, description, fit, fabrication, colors, price} = allData;
 
       this.setState({
         description: description,

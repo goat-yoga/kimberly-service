@@ -13,7 +13,7 @@ db.once('open', function() {
 
 var displaySchema =  new mongoose.Schema({
   id: {type: Number, unique: true},
-  productNumber: Number,
+  itemId: Number,
   name: String,
   department: String,
   description: [{ paragraph: Array, bullets: Array}],
@@ -23,7 +23,10 @@ var displaySchema =  new mongoose.Schema({
   price: String
 })
 
+let Display = mongoose.model('Display', displaySchema);
+
 module.exports = {
   db: db,
-  displaySchema: displaySchema
+  displaySchema: displaySchema,
+  Display: Display
 }
