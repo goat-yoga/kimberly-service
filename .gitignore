@@ -5,7 +5,7 @@
 npm
 npm-debug.log
 node_modules/
-config/
+
 
 pids
 *.pid
@@ -25,5 +25,7 @@ coverage
 build/
 dist/bundle.js
 
+
 # my cloudfront domain
 d1nv9rmhof7157.cloudfront.net
+
