@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 const {displaySchema, Display} = require('./index.js')
-const aws = require('aws-sdk');
-const config = require('../config/config.json');
-
+const _ = require('underscore');
 
 var makeProduct = function(itemNum) {
 
@@ -48,6 +46,7 @@ var makeProduct = function(itemNum) {
   }
 
   let colorSwatches = randomFakeArray(Math.ceil(Math.random() * Math.ceil(6)), getRandomColorSwatch);
+  let filteredColors = _.uniq(colorSwatches);
 
   var grabRandomImgUrl = function() {
     let imgNumber = Math.ceil(Math.random() * Math.ceil(100));
@@ -60,7 +59,7 @@ var makeProduct = function(itemNum) {
   }
 
 
-  let colorsAndPhotos = colorSwatches.map((color) => {
+  let colorsAndPhotos = filteredColors.map((color) => {
     return {
       colorName: faker.commerce.color(),
       swatch: color,
