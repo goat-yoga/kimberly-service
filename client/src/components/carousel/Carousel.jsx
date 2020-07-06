@@ -12,7 +12,7 @@ class DemoCarousel extends React.Component {
     render() {
         return (
           <div >
-            <Carousel infiniteLoop={true} showArrows={true} showThumbs={false} showIndicators={false} selectedItem={this.props.startPhoto}>
+            <Carousel infiniteLoop={true} showArrows={true} showThumbs={false} showIndicators={false} selectedItem={this.props.startPhoto} useKeyboardArrows={true}>
               {
                 this.props.photos.map((photo, index)=> {
                   return <img
