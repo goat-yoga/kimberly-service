@@ -33,13 +33,14 @@ class App extends React.Component {
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleSelectSize = this.handleSelectSize.bind(this);
     this.toggleCarousel = this.toggleCarousel.bind(this);
+    this.selectPhoto = this.selectPhoto.bind(this);
   }
 
   componentDidMount() {
     let newProduct = Math.floor(Math.random() * (6100 - 6000)) + 6000;
 
     axios
-    .get(`http:localhost:3005/products/${newProduct}`)
+    .get(`products/${newProduct}`)
     .then(({data})=> {
       let allData = data[0];
       let {_id, name, department, description, fit, fabrication, colors, price} = allData;
@@ -86,6 +87,13 @@ class App extends React.Component {
     })
   }
 
+  selectPhoto(e, i){
+    this.setState({
+      startPhoto: i
+    })
+    this.toggleCarousel()
+  }
+
   render(){
     {
     return (
@@ -94,7 +102,8 @@ class App extends React.Component {
          <div id="exit" onClick={this.toggleCarousel}><svg viewBox="0 0 14 14" width="24" height="24" fill="#bbbbbb"><path d="M13.6 11.6L9 7l4.6-4.6c.5-.5.5-1.4 0-2-.5-.5-1.4-.5-2 0L7 5 2.4.4C1.9-.1 1-.1.4.4c-.5.5-.5 1.4 0 2L5 7 .4 11.6c-.5.5-.5 1.4 0 2 .5.5 1.4.5 2 0L7 9l4.6 4.6c.5.5 1.4.5 2 0s.5-1.4 0-2z"></path></svg></div>
          <DemoCarousel
          photos={this.state.currentPhotos}
-         toggleCarousel={this.toggleCarousel}/>
+         toggleCarousel={this.toggleCarousel}
+         startPhoto={this.state.startPhoto}/>
        </div>
         :
       <main className="main" id="MainContent" role="main">
@@ -103,6 +112,7 @@ class App extends React.Component {
             <div className="product-images">
                <Photos
               photos={this.state.currentPhotos}
+              selectPhoto={this.selectPhoto}
               toggleCarousel={this.toggleCarousel}/>
             </div>
             <div className="product-data sticky">
