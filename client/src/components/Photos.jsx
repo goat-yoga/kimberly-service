@@ -6,7 +6,7 @@ const Photos = (props) => {
     <div className="main-images-wrapper" >
       {
         props.photos.map((photo, index)=> {
-          return <Photo photo={photo} key={index}/>
+          return <Photo photo={photo} key={index} i={index} toggleCarousel={props.toggleCarousel}/>
         })
       }
     </div>
