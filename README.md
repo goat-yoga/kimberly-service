@@ -16,7 +16,8 @@
 
 ## Usage
 
-> Some usage instructions
+This repo is meant to be used with the associated repos to produce a product display component within a mock webpage.
+- To get a new item, refresh the page
 
 ## Requirements
 
@@ -36,3 +37,7 @@ npm install -g webpack
 npm install
 ```
 
+> To use this repo please use npm to install webpack and dependencies
+- Run npm start to start server
+- Run npm run react-dev to build bundle via webpack
+- Seed items into mongodb using npm run seed
