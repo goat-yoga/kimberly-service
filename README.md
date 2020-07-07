@@ -18,7 +18,12 @@
 
 This repo is meant to be used with the associated repos to produce a product display component within a mock webpage.
 - To get a new item, refresh the page
-
+- To seed with mock data from the website use mock-seed script and change
+    in client/src/components/App.jsx
+    line  43 .get(`http://localhost:3005/products/${randomProduct}`) to  .get(`http://localhost:3005/products/100`)
+- If you need to run this component seperately from other modules change
+    in client/src/components/App.jsx
+    line  43 .get(`http://localhost:3005/products/${randomProduct}`) to  .get(`products/${randomProduct}`)
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
