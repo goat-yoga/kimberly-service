@@ -40,7 +40,7 @@ class App extends React.Component {
     let newProduct = Math.floor(Math.random() * (6100 - 6000)) + 6000;
 
     axios
-    .get(`http://localhost:3005/products/100`)
+    .get(`http://localhost:3005/products/${newProduct}`)
     .then(({data})=> {
       let allData = data[0];
       let {_id, name, department, description, fit, fabrication, colors, price} = allData;
