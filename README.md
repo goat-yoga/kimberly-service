@@ -1,4 +1,4 @@
-# Project Name
+# GOAT Yoga
 
 > We build a product page clone of aloyoga.com as a student project!
 
